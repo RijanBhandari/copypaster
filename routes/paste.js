@@ -8,7 +8,7 @@ const getDbPath = path.join(process.cwd(), "db.json");
 const router = express.Router();
 
 router.post("/", (req, res) => {
-  const id = nanoid();
+  const id = nanoid(5);
 
   const code = req.body.code;
   const deleteOnRead = req.body.deleteOnRead;
