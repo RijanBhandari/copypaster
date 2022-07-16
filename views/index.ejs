@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial;
+        padding: 10px;
+        color: white;
+
+        background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("cover.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      /* Header/ Title */
+      .header {
+        padding: 30px;
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 50px;
+      }
+
+      /* Style the top navigation bar */
+      .topnav {
+        overflow: hidden;
+        background-color: golden;
+      }
+
+      /* Style the topnav links */
+      .topnav a {
+        float: left;
+        display: block;
+        color: white;
+
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      /* Change color on hover */
+      .topnav a:hover {
+        background-color: #ddd;
+
+        color: black;
+      }
+
+      /* Create two unequal columns that floats next to each other */
+      /* Left column */
+      .leftcolumn {
+        float: left;
+        width: 75%;
+      }
+
+      /* Right column */
+      .rightcolumn {
+        float: left;
+        width: 25%;
+        background-image: url("blk.jpg");
+        padding-left: 20px;
+      }
+      
+
+      /* Add a card effect for articles */
+      .card {
+        color: black;
+        background-color: whitesmoke;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 4px;
+      }<br>
+      .card-1 {
+        color: black;
+        background-color: whitesmoke;
+        text-align: left;
+        padding: 0px;
+        float: right;
+        border-radius: 4px;
+      }
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 20px;
+        text-align: center;
+        color: black;
+        background-color: lavenderblush;
+
+        margin-top: 20px;
+      }
+
+      /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+      @media screen and (max-width: 800px) {
+        .leftcolumn,
+        .rightcolumn {
+          width: 100%;
+          padding: 0;
+        }
+      }
+
+      /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+      @media screen and (max-width: 400px) {
+        .topnav a {
+          float: none;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Copy paster</h1>
+      <img
+        src="cvct.webp"
+        class="w3-circle"
+        alt="logo"
+        style="width: 10%; length: 10%; max-width: 400px"
+      />
+      <p>For all your copy and paste requirements.</p>
+    </div>
+
+    <div class="topnav">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Help</a>
+      <a href="#" style="float: right">CONTACT</a>
+    </div>
+
+    <div
+      class="row"
+      style="
+        background-color: white;
+        padding: 30px;
+        border-radius: 4px;
+        margin-top: 20px;
+      "
+    >
+      <div class="leftcolumn">
+        <div class="card">
+          <h2>Type Here</h2>
+          <h5>Type in your required text.</h5>
+          <textarea id="code-container" id="w3review" name="w3review" rows="6" cols="60"></textarea>
+        
+         <h3>CODE</h3>
+         <h5>The generated link is:
+
+          <span id="show-me-code"></span>
+         </h5>
+         
+          <h3>After use:</h3>
+          <input type="radio" id="delete" name="choice" value ="Delete after use." />
+            <label for="delete">Delete.</label>  <br />
+          <input
+            type="radio"
+            id="dont"
+            name="choice"
+            value="Save for further use."
+            checked="checked"
+          />
+            <label for="dont">Save for future.</label><br />
+        </div>
+        <div>
+          <button class="w3-btn w3-blue px-3" onclick="submitTheGoldenCode()"><h4>Send</h4></button>
+         </div> 
+        <br />
+        <div class="card">
+          <h3>CODE</h3>
+          <h5>Type in the generated link.</h5>
+          <!-- <textarea id="givecode" name="w3review" rows="4" cols="20"></textarea> -->
+
+          <input id="codeee" style="padding: 20px;" />
+          
+      <button class="w3-btn w3-blue" onclick="fetchTheGoldenCode()"><h4>Enter</h4></button>
+      <div class="card-1">
+        
+      <h2>Paste Here</h2>
+      <h5>Look for your desired text here.</h5>
+      <textarea id="givecode" name="w3review" rows="6" cols="60"></textarea> 
+    </div>
+    </div>  
+      </div>
+      <div class="rightcolumn">
+        <div class="card">
+          <h2>Instructions</h2>
+          <p>
+            Type in the text you want to copy in the box labelled "Type here".
+            Click on the copy button. A link should be generated that is seen in
+            the "link" box. Once the link is generated, type in the link at the
+            "code" box and enter. The desired text should be seen in the "Paste
+            here" box.
+          </p>
+        </div>
+        
+        <br />
+        <div class="card">
+          <p></p>
+          
+    <div class="footer">
+      <h2>Find Us @</h2>
+      <p>Copypaster@business.np</p>
+    </div>
+  </body>
+
+
+  <script>
+
+    function submitTheGoldenCode(){
+      const code = document.querySelector("textarea#code-container").value
+      const deleteAfterRead = document.querySelector("input#delete").checked
+      console.log({deleteAfterRead});
+
+      fetch("/paste", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({code, deleteOnRead: deleteAfterRead})
+      }).then(res => res.json()).then(data => {
+
+        const span = document.querySelector("#show-me-code")
+        span.innerHTML = data.id
+
+      })
+    }
+
+
+    function fetchTheGoldenCode(){
+      const id = document.querySelector("#codeee")
+      fetch(`/paste/${id.value}`).then(res => {
+        if(!res.ok) throw new Error(`Not Found`);
+        return res.json()
+      }).then(data => {
+        document.querySelector("#givecode").textContent = data.code
+      }).catch(err => {
+        alert(`Not Found`);
+      })
+    }
+  </script>
+</html>
