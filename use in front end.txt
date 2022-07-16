@@ -1,7 +1,0 @@
-fetch("http://localhost:3000/paste", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({code: "Hello 2", deleteOnRead: true})
-}).then(res => res.json()).then(console.log)
